@@ -1,0 +1,7 @@
+.chart{
+    height: 380px;
+}
+#baseChart{
+    width:100% !important; 
+    height:100% !important;
+}
