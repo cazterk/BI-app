@@ -19,7 +19,9 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { ServerComponent } from './server/server.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { AngularFireModule } from "@angular/fire";
+import { environment } from 'src/environments/environment';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -35,13 +37,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     PieChartComponent,
     ServerComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    ChartsModule
+    ChartsModule,
+    ReactiveFormsModule,
+    // FormGroup,
+    AngularFireModule.initializeApp(environment.firebase)
 
   ],
   
