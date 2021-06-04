@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-authentication-92f43": {
+      "hosting": {
+        "BI-app": [
+          "angular-authentication-92f43"
+        ]
+      }
+    }
+  }
+}
