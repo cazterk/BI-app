@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import {  } from "../../assets/images/img.svg";
 
 @Component({
   selector: 'app-login',
