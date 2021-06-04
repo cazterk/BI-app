@@ -1,6 +1,6 @@
 import { Component, OnInit, ɵCurrencyIndex } from '@angular/core';
-import { Order } from '../../shared/order'
-import { from } from 'rxjs';
+import { Order } from '../../../shared/order'
+
 
 
 @Component({

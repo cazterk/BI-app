@@ -2,7 +2,7 @@
   height: 100vh;
   padding-top: 80px;
   width: 10rem;
-  position: fixed;
+  position: fixed !important;
   background-color: #191f26;
 }
 
