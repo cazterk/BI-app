@@ -1,6 +1,7 @@
-import { Router } from "@angular/router";
+import { Router, Routes } from "@angular/router";
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+
 
 
 @Component({
@@ -8,6 +9,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
+
+
+
 export class DashboardComponent implements OnInit {
 
   constructor(

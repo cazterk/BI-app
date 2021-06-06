@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'; 
-import { appRoutes } from './dashboard/routes';
+
 
 import { NgModule } from '@angular/core';
 import{ChartsModule} from 'ng2-charts';
@@ -43,7 +43,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
+  
     ChartsModule,
     ReactiveFormsModule,
     // FormGroup,
