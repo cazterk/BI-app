@@ -9,34 +9,51 @@
     alt="img"
     style="width: 20rem; "
   />
-  <form class="form-signin" style="width: 25rem; " [formGroup]="login">
+  <form
+    class="form-signin"
+    style="width: 25rem; "
+    [formGroup]="login"
+    (ngSubmit)="onLogin()"
+    #localForm="ngForm"
+  >
     <h1 class="h1 mb-3 font-weight-normal text-center">Please sign in</h1>
 
-    <label for="inputEmail" class="sr-only">Email Address</label>
-    <input
-      type="email"
-      id="inputEmail"
-      formControlName="email"
-      class="form-control mb-2"
-      placeholder="Email address"
-      required
-      autofocus
-    />
-    <label for="inputPassword" class="sr-only">Password</label>
-
-    <input
-      type="password"
-      id="inputPassword"
-      class="form-control"
-      formControlName="password"
-      placeholder="Password"
-      required
-    />
-    <div class="checkbox mb-1">
-      <label>
-        <input type="checkbox" values="remember-me" /> Remember me
-      </label>
+    <div class="input-group mb-2 flex-column  ">
+      <label for="inputEmail" class="sr-only">Email Address</label>
+      <input
+        type="email"
+        id="inputEmail"
+        formControlName="email"
+        class="form-control "
+        placeholder="Email address"
+        required
+        autofocus
+        [class.is-invalid]="localForm.submitted && login.get('email')?.invalid"
+        style="width: 100%;"
+      />
+      <small class="invalid-feedback">valid email is required</small>
     </div>
+
+    <div class="input-group flex-column  ">
+      <label for="inputPassword" class="sr-only">Password</label>
+
+      <input
+        type="password"
+        id="inputPassword"
+        class="form-control"
+        formControlName="password"
+        placeholder="Password"
+        required
+        [class.is-invalid]="
+          localForm.submitted && login.get('password')?.invalid
+        "
+        style="width: 100%;"
+      />
+      <small class="invalid-feedback">valid password is required</small>
+    </div>
+    <div class="checkbox mb-1"></div>
+    <label> <input type="checkbox" values="remember-me" /> Remember me </label>
+
     <button
       (click)="onLogin()"
       class="btn btn-lg btn-primary btn-block"
