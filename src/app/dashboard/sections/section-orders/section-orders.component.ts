@@ -134,5 +134,7 @@ export class SectionOrdersComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  goToPrevious():void{
+    console.log('prevous button clicked')
+  }
 }
