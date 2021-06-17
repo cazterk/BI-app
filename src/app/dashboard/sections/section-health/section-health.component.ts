@@ -6,6 +6,10 @@ const SAMPLE_SERVERS = [
   { id: 2, name: 'dev-mail', isOnline: false },
   { id: 3, name: 'prod-web', isOnline: true },
   { id: 4, name: 'prod-mail', isOnline: true },
+  { id: 1, name: 'sales-serv', isOnline: true },
+  { id: 2, name: 'sales-mail', isOnline: false },
+  { id: 3, name: 'main-web', isOnline: true },
+  { id: 4, name: 'main-mail', isOnline: true },
 ];
 
 @Component({
