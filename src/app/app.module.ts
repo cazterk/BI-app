@@ -22,7 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFireModule } from "@angular/fire";
 import { environment } from 'src/environments/environment';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { PaginationComponent } from './pagination/pagination.component';
+import { PaginationComponent } from './dashboard/pagination/pagination.component';
 
 
 @NgModule({
