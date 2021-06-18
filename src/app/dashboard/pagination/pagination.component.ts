@@ -27,4 +27,16 @@ export class PaginationComponent implements OnInit {
   onNext(): void {
     this.goNext.emit(true);
   }
+
+  onPage(n: number): void {
+    this.goPage.emit(n);
+  }
+
+  totalPages(): number {
+    return Math.ceil(this.count / this.perPage) || 0;
+  }
+
+  isLastPage(): boolean {
+    return this.perPage * this.page >= this.count;
+  }
 }
