@@ -17,6 +17,6 @@ export class SalesDataService {
   }
 
   getOrdersByState(): Observable<any> {
-    return this._http.get("http://localhost:5000/api/order/bystate");
+    return this._http.get("http://localhost:5000/api/order/bystate/");
   }
 }

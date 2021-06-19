@@ -1,7 +1,7 @@
-.chart{
-    height: 380px;
+.chart {
+  height: 100%;
 }
-#baseChart{
-    width:100% !important; 
-    height:100% !important;
+canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
