@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, pipe } from "rxjs";
-import { map } from "rxjs/operators";
-import { jsonpFactory } from "@angular/http/src/http_module";
+import { Observable } from "rxjs";
+
 @Injectable()
 export class SalesDataService {
   constructor(private _http: HttpClient) {}
@@ -11,5 +10,13 @@ export class SalesDataService {
     return this._http.get(
       "http://localhost:5000/api/order/" + pageIndex + "/" + pageSize
     );
+  }
+
+  getOrdersByCustomer(n: number): Observable<any> {
+    return this._http.get("http://localhost:5000/api/order/bycustomer/" + n);
+  }
+
+  getOrdersByState(): Observable<any> {
+    return this._http.get("http://localhost:5000/api/order/bystate");
   }
 }
