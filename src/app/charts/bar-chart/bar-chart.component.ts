@@ -35,14 +35,43 @@ export class BarChartComponent implements OnInit {
     this._salesDataService.getOrders(1, 100).subscribe(res => {
       // console.log(res["page"]["data"]);
       const localChartData = this.getChartData(res);
+      console.log(localChartData.map(x => x[1]));
+      this.barChartLabels = localChartData.map(x => x[0]).reverse();
+      this.barChartData = [
+        { data: localChartData.map(x => x[1]), label: "Sales" }
+      ];
     });
   }
 
   getChartData(res: Response) {
     this.orders = res["page"]["data"];
     const data = this.orders.map(o => o.total);
-    const labels = this.orders.map(o => o.placed);
 
-    console.log(labels);
+    const formattedOrders = this.orders.reduce((r, e) => {
+      r.push([moment(e.placed).format("DD-MM-YY"), e.total]);
+      return r;
+    }, []);
+
+    const p = [];
+    // console.log("formattedOrders:", formattedOrders);
+
+    const chartData = formattedOrders.reduce((r, e) => {
+      const key = e[0];
+      if (!p[key]) {
+        p[key] = e;
+        r.push(p[key]);
+      } else {
+        p[key][1] += e[1];
+      }
+      return r;
+    }, []);
+
+    // const myData = [3, 4, 5].reduce((sum, value) => {
+    //   console.log("sum:", sum, "value:", value);
+    //   return sum + value;
+    // }, 0);
+    // console.log("myData:", myData);
+    // console.log(formattedOrders);
+    return chartData;
   }
 }
