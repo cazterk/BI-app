@@ -39,6 +39,7 @@ export class SectionOrdersComponent implements OnInit {
   }
 
   goToPage(n: number): void {
+    console.log("pageNumber is clicked");
     this.page = n;
     this.getOrders();
   }
