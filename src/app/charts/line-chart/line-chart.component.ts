@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import * as moment from "moment";
 import { SalesDataService } from "src/app/services/sales-data.service";
 import { LINE_CHART_COLORS } from "../../shared/chart.colors";
 
@@ -49,7 +50,26 @@ export class LineChartComponent implements OnInit {
             a.push(i.map(o => new Date(o[0])));
             return a;
           }, []);
-        console.log("dates:", dates);
+        // console.log("dates:", dates);
+
+        dates = [].concat.apply([], dates);
+        // console.log("dates:", dates);
+
+        const r = this.getCustomerOrdersByDate(allChartData, dates)["data"];
+        // console.log("r:", r);
+
+        this.lineChartLabels = r[0]["orders"].map(o => o["date"]);
+        this.lineChartData = [
+          {
+            data: r[0].orders.map(x => x.total),
+            label: r[0]["customer"]
+          },
+          {
+            data: r[1].orders.map(x => x.total),
+            label: r[1]["customer"]
+          },
+          { data: r[2].orders.map(x => x.total), label: r[2]["customer"] }
+        ];
       });
     });
   }
@@ -65,6 +85,64 @@ export class LineChartComponent implements OnInit {
 
     // console.log("formattedOrders:", formattedOrders);
     const result = { customer: name, data: formattedOrders };
+    return result;
+  }
+
+  getCustomerOrdersByDate(orders: any, dates: any) {
+    //for each customer -> for each date =>
+    // {data: [{ 'customer': 'XYZ', 'orders': [{'date': '17-11-25', total:2421}]}, {}, {} []]}
+    const customers = this.topCustomers;
+    const prettyDates = dates.map(x => this.toFriendlyDate(x));
+    const u = Array.from(new Set(prettyDates)).sort();
+    //    console.log(u);
+
+    //define our result  object to return
+    const result = {};
+    const datasets = (result["data"] = []);
+
+    customers.reduce((x, y, i) => {
+      // console.log("reducing :", y, "at index:", i);
+      const customerOrders = [];
+      datasets[i] = {
+        customer: y,
+        orders: u.reduce((r, e, j) => {
+          const obj = {};
+          obj["date"] = e;
+          obj["total"] = this.getCustomerDateTotal(e, y); //sum total orders for this customer on this day
+          customerOrders.push(obj);
+          // console.log(
+          //   "reducing :",
+          //   e,
+          //   "at index:",
+          //   j,
+          //   "customerOrders:",
+          //   customerOrders
+          // );
+          return customerOrders;
+        })
+      };
+      return x;
+    }, []);
+
+    return result;
+  }
+
+  toFriendlyDate(date: Date) {
+    return moment(date)
+      .endOf("day")
+      .format("DD.MM.YYYY");
+  }
+
+  getCustomerDateTotal(date: any, customer: string) {
+    const r = this.allOrders.filter(
+      o =>
+        o.customer.name === customer && this.toFriendlyDate(o.placed) === date
+    );
+
+    const result = r.reduce((a, b) => {
+      return a + b.total;
+    }, 0);
+
     return result;
   }
 }
