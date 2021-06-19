@@ -40,6 +40,18 @@ export class PaginationComponent implements OnInit {
     return this.perPage * this.page >= this.count;
   }
 
+  getMin(): number {
+    return this.perPage * this.page - this.perPage + 1;
+  }
+
+  getMax(): number {
+    let max = this.perPage * this.page;
+    if (max > this.count) {
+      max = this.count;
+    }
+    return max;
+  }
+
   getPages(): number[] {
     const totalPages = Math.ceil(this.count / this.perPage);
     const thisPage = this.page || 1;
@@ -47,16 +59,35 @@ export class PaginationComponent implements OnInit {
     const pages: number[] = [];
     pages.push(thisPage);
 
+    console.log(
+      "starting loop with: total pages:",
+      totalPages,
+      "thisPage:",
+      thisPage,
+      "pagesToShow:",
+      pagesToShow
+    );
     for (let i = 0; i < pagesToShow - 1; i++) {
+      console.log("pages[]:", pages);
       if (pages.length < pagesToShow) {
         if (Math.min.apply(null, pages) > 1) {
           pages.push(Math.min.apply(null, pages) - 1);
+          console.log(
+            "pushing ",
+            Math.min.apply(null, pages) - 1,
+            "onto array"
+          );
         }
       }
 
       if (pages.length < pagesToShow) {
         if (Math.max.apply(null, pages) < totalPages) {
           pages.push(Math.max.apply(null, pages) + 1);
+          console.log(
+            "pushing ",
+            Math.max.apply(null, pages) + 1,
+            "onto array"
+          );
         }
       }
     }
