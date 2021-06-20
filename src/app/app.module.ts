@@ -22,6 +22,7 @@ import { PaginationComponent } from "./dashboard/pagination/pagination.component
 
 // Services
 import { SalesDataService } from "./services/sales-data.service";
+import { ServerService } from "./services/server.service";
 
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "src/environments/environment";
@@ -54,7 +55,7 @@ import { FormGroup, ReactiveFormsModule } from "@angular/forms";
     AngularFireModule.initializeApp(environment.firebase)
   ],
 
-  providers: [SalesDataService],
+  providers: [SalesDataService, ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
