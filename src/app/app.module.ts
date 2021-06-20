@@ -27,6 +27,7 @@ import { ServerService } from "./services/server.service";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "src/environments/environment";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { LoadingSpinnerComponent } from "./dashboard/loading-spinner/loading-spinner.component";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FormGroup, ReactiveFormsModule } from "@angular/forms";
     ServerComponent,
     LoginComponent,
     DashboardComponent,
-    PaginationComponent
+    PaginationComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

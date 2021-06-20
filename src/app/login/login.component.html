@@ -9,8 +9,11 @@
     alt="img"
     style="width: 20rem; "
   />
+  <div>
+    <app-loading-spinner *ngIf="!showSpinner"></app-loading-spinner>
+  </div>
   <form
-    class="form-signin"
+    class="form-signin "
     style="width: 25rem; "
     [formGroup]="login"
     (ngSubmit)="onLogin()"
