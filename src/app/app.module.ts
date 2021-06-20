@@ -15,7 +15,7 @@ import { SectionHealthComponent } from "./dashboard/sections/section-health/sect
 import { BarChartComponent } from "./charts/bar-chart/bar-chart.component";
 import { LineChartComponent } from "./charts/line-chart/line-chart.component";
 import { PieChartComponent } from "./charts/pie-chart/pie-chart.component";
-import { ServerComponent } from "./server/server.component";
+import { ServerComponent } from "./dashboard/server/server.component";
 import { LoginComponent } from "./login/login.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { PaginationComponent } from "./dashboard/pagination/pagination.component";
