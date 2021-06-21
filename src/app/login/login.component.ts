@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.login = this.fb.group(
       {
         email: new FormControl("", Validators.required),
