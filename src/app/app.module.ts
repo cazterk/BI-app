@@ -28,6 +28,7 @@ import { AngularFireModule } from "@angular/fire";
 import { environment } from "src/environments/environment";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { LoadingSpinnerComponent } from "./dashboard/loading-spinner/loading-spinner.component";
+import { SectionSoonComponent } from "./dashboard/sections/section-soon/section-soon.component";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LoadingSpinnerComponent } from "./dashboard/loading-spinner/loading-spi
     LoginComponent,
     DashboardComponent,
     PaginationComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    SectionSoonComponent
   ],
   imports: [
     BrowserModule,
