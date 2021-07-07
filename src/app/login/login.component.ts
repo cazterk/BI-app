@@ -1,5 +1,5 @@
 import { Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import {
   FormBuilder,
@@ -17,6 +17,9 @@ import "firebase/auth";
 export class LoginComponent implements OnInit {
   login: FormGroup;
   showSpinner: boolean = false;
+
+  @Input()
+  error: string;
 
   constructor(
     private fb: FormBuilder,
@@ -40,11 +43,13 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.login.value;
     this.auth
       .signInWithEmailAndPassword(email, password)
+      .catch(err => {
+        this.error = err.message;
+        this.showSpinner = true;
+      })
       .then(() => this.router.navigate(["dashboard"]));
     this.showSpinner = false;
 
-    // .catch(err => {
-    //   this.message.err(err).message;
-    // })
+    // this.error = null;
   }
 }
