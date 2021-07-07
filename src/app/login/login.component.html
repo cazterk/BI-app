@@ -33,6 +33,9 @@
         autofocus
         [class.is-invalid]="localForm.submitted && login.get('email')?.invalid"
         style="width: 100%;"
+        name="email"
+        ngModel
+        [email]="true"
       />
       <small class="invalid-feedback">valid email is required</small>
     </div>
